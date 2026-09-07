@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpDesk Lite</title>
+    <!-- Enlace al CSS externo obligatorio -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <h1>HelpDesk Lite</h1>
+            <button id="btn-open-modal">+ Nuevo Ticket</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Dashboard Dinámico -->
+        <section id="dashboard">
+            <article class="card-stat">
+                <h3>TOTAL</h3>
+                <p id="stat-total">0</p>
+            </article>
+            <article class="card-stat">
+                <h3>NUEVOS</h3>
+                <p id="stat-new">0</p>
+            </article>
+            <article class="card-stat">
+                <h3>PROCESO</h3>
+                <p id="stat-in-process">0</p>
+            </article>
+            <article class="card-stat">
+                <h3>RESUELTOS</h3>
+                <p id="stat-resolved">0</p>
+            </article>
+        </section>
+
+        <!-- Búsqueda y Filtros -->
+        <section id="filters">
+            <div>
+                <label for="search-input">Buscar</label>
+                <input type="text" id="search-input" placeholder="internet...">
+            </div>
+            
+            <div id="status-filters">
+                <span>Estado:</span>
+                <button class="btn-filter active" data-status="Todos">Todos</button>
+                <button class="btn-filter" data-status="Nuevo">Nuevo</button>
+                <button class="btn-filter" data-status="En proceso">Proceso</button>
+                <button class="btn-filter" data-status="Resuelto">Resuelto</button>
+                <button class="btn-filter" data-status="Cerrado">Cerrado</button>
+            </div>
+
+            <div>
+                <label for="priority-filter">Prioridad:</label>
+                <select id="priority-filter">
+                    <option value="Todas">Todas</option>
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Crítica">Crítica</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Contenedor donde JS inyectará los tickets -->
+        <section id="tickets-container">
+            <!-- Las tarjetas de los tickets irán aquí -->
+        </section>
+    </main>
+
+    <!-- Formulario para Nuevo Ticket (Oculto por defecto) -->
+    <section id="modal-form" style="display: none;"> <!-- Nota: Quitaremos el style inline cuando hagamos el CSS -->
+        <article>
+            <h2>NUEVO TICKET</h2>
+            <form id="ticket-form">
+                <div>
+                    <label for="title">Título</label>
+                    <input type="text" id="title" required>
+                </div>
+                
+                <div>
+                    <label for="description">Descripción</label>
+                    <textarea id="description" required></textarea>
+                </div>
+                
+                <div>
+                    <label for="category">Categoría</label>
+                    <select id="category" required>
+                        <option value="">Seleccione una...</option>
+                        <option value="Hardware">Hardware</option>
+                        <option value="Software">Software</option>
+                        <option value="Red">Red</option>
+                        <option value="Accesos">Accesos</option>
+                        <option value="Correo">Correo</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="priority">Prioridad</label>
+                    <select id="priority" required>
+                        <option value="">Seleccione una...</option>
+                        <option value="Baja">Baja</option>
+                        <option value="Media">Media</option>
+                        <option value="Alta">Alta</option>
+                        <option value="Crítica">Crítica</option>
+                    </select>
+                </div>
+                
+                <button type="submit">Crear Ticket</button>
+                <button type="button" id="btn-close-modal">Cancelar</button>
+            </form>
+        </article>
+    </section>
+
+    <!-- Enlace al JS externo obligatorio -->
+    <script src="js/app.js"></script>
+</body>
+</html>
